@@ -1,28 +1,30 @@
 import { useState, useEffect } from 'react';
 import { getPopularMovie } from 'api';
-import { NavLink } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import { MoviesContainer, MoviesItem, MoviesBox } from './MoviesList.styled';
 
 export const MoviesList = () => {
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     getPopularMovie().then(setMovies);
   }, []);
 
   if (!movies) {
-    return <div>Oops, movies not found</div>;
+    return <MoviesBox>Oops, movies not found</MoviesBox>;
   }
   return (
     <>
-      <ul>
+      <MoviesContainer>
         {movies.map(movie => (
-          <li key={movie.id}>
-            <NavLink to={`${movie.id}`}>{movie.name || movie.title}</NavLink>
-          </li>
+          <MoviesItem key={movie.id}>
+            <NavLink to={`/movies/${movie.id}`} state={{ from: location }}>
+              {movie.name || movie.title}
+            </NavLink>
+          </MoviesItem>
         ))}
-      </ul>
-      <Outlet />
+      </MoviesContainer>
     </>
   );
 };

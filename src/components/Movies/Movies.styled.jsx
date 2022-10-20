@@ -12,4 +12,3 @@ export const MoviesItem = styled.li`
     color: ${({ theme }) => theme.color.primary};
   }
 `;
-export const MoviesBox = styled.div``;

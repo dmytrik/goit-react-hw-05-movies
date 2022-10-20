@@ -16,6 +16,18 @@ export const getPopularMovie = async () => {
   }
 };
 
+export const getMoviesByWord = async word => {
+  try {
+    const response = await axios.get(`/search/movie`, {
+      params: {
+        api_key: API_KEY,
+        query: word,
+      },
+    });
+    return response.data.results;
+  } catch {}
+};
+
 export const getMovieById = async id => {
   try {
     const movie = await axios.get(`/movie/${id}`, {
