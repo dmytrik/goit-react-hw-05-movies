@@ -7,7 +7,9 @@ export const Header = () => {
         <Nav>
           <NavList>
             <NavItem>
-              <NavLinkNorm to={'/'}>Home</NavLinkNorm>
+              <NavLinkNorm to={'/'} end>
+                Home
+              </NavLinkNorm>
             </NavItem>
             <NavItem>
               <NavLinkNorm to={'/movies'}>Movies</NavLinkNorm>

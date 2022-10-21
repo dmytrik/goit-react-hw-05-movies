@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { getMovieById } from 'api';
 import {
@@ -11,9 +11,10 @@ import {
   MovieDescriptionBox,
   BackBtn,
   MovieAdditionalBox,
+  MovieInfoLink,
 } from './MovieInfo.styled';
 
-export const MovieInfo = () => {
+const MovieInfo = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
@@ -27,9 +28,10 @@ export const MovieInfo = () => {
     const { poster_path, title, release_date, popularity, overview, genres } =
       movie;
     const normGenres = genres.map(({ name }) => name).join(' ');
+    const backLink = nav.current.state?.from ?? '/movies';
     return (
       <>
-        <BackBtn to={nav.current.state.from}>Back</BackBtn>
+        <BackBtn to={backLink}>Back</BackBtn>
         <MoviePrimaryBox>
           <ImgBox>
             <Img src={IMG_REGUEST + poster_path} alt={title} />
@@ -46,13 +48,15 @@ export const MovieInfo = () => {
           </MovieDescriptionBox>
         </MoviePrimaryBox>
         <MovieAdditionalBox>
-          <NavLink to={'cast'}>Cast</NavLink>
-          <NavLink to={'reviews'}>Reviews</NavLink>
+          <MovieInfoLink to={'cast'}>Cast</MovieInfoLink>
+          <MovieInfoLink to={'reviews'}>Reviews</MovieInfoLink>
         </MovieAdditionalBox>
         <Outlet />
       </>
     );
   }
 
-  return <div>Упс, щось пішло не так</div>;
+  return;
 };
+
+export default MovieInfo;

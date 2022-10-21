@@ -3,7 +3,7 @@ import { getPopularMovie } from 'api';
 import { NavLink, useLocation } from 'react-router-dom';
 import { MoviesContainer, MoviesItem, MoviesBox } from './MoviesList.styled';
 
-export const MoviesList = () => {
+const MoviesList = () => {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
 
@@ -28,3 +28,4 @@ export const MoviesList = () => {
     </>
   );
 };
+export default MoviesList;

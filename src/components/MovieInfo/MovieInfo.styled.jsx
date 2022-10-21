@@ -23,7 +23,21 @@ export const MovieDescriptionBox = styled.div`
   padding-left: 20px;
 `;
 
-export const MovieAdditionalBox = styled.div``;
+export const MovieInfoLink = styled(NavLink)`
+  display: block;
+  padding: 10px 0;
+  cursor: pointer;
+  width: 70px;
+  margin-left: 50px;
+  :hover {
+    background-color: ${({ theme }) => theme.color.active};
+    color: ${({ theme }) => theme.color.primary};
+  }
+`;
+
+export const MovieAdditionalBox = styled.div`
+  border-bottom: 2px solid ${({ theme }) => theme.color.border};
+`;
 export const ImgBox = styled.div``;
 export const Img = styled.img``;
 export const MovieTitle = styled.h1``;

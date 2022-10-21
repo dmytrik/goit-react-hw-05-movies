@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const HeaderBox = styled.header`
   height: 60px;
@@ -22,8 +22,15 @@ export const NavItem = styled.li`
   }
 `;
 
-export const NavLinkNorm = styled(Link)`
+export const NavLinkNorm = styled(NavLink)`
   color: ${({ theme }) => theme.color.default};
   text-decoration: none;
   display: block;
+  padding: 10px 5px;
+  border-radius: 8px;
+
+  &.active {
+    background-color: ${({ theme }) => theme.color.active};
+    color: ${({ theme }) => theme.color.primary};
+  }
 `;
